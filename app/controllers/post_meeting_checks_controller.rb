@@ -10,7 +10,8 @@ class PostMeetingChecksController < ApplicationController
   end
 
   def index
-    @post_meeting_checks = PostMeetingCheck.page(params[:page]).per(10)
+    @q = PostMeetingCheck.ransack(params[:q])
+    @post_meeting_checks = @q.result(:distinct => true).includes(:user, :meeting).page(params[:page]).per(10)
 
     render("post_meeting_checks/index.html.erb")
   end

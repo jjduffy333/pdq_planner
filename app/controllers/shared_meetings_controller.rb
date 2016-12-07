@@ -10,7 +10,8 @@ class SharedMeetingsController < ApplicationController
   end
 
   def index
-    @shared_meetings = current_user.shared_meetings.page(params[:page]).per(10)
+    @q = current_user.shared_meetings.ransack(params[:q])
+      @shared_meetings = @q.result(:distinct => true).includes(:user, :people).page(params[:page]).per(10)
 
     render("shared_meetings/index.html.erb")
   end
