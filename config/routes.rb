@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Shared_meeting resource:
+  # CREATE
+  get "/shared_meetings/new", :controller => "shared_meetings", :action => "new"
+  post "/create_shared_meeting", :controller => "shared_meetings", :action => "create"
+
+  # READ
+  get "/shared_meetings", :controller => "shared_meetings", :action => "index"
+  get "/shared_meetings/:id", :controller => "shared_meetings", :action => "show"
+
+  # UPDATE
+  get "/shared_meetings/:id/edit", :controller => "shared_meetings", :action => "edit"
+  post "/update_shared_meeting/:id", :controller => "shared_meetings", :action => "update"
+
+  # DELETE
+  get "/delete_shared_meeting/:id", :controller => "shared_meetings", :action => "destroy"
+  #------------------------------
+
   # Routes for the Person resource:
   # CREATE
   get "/people/new", :controller => "people", :action => "new"
