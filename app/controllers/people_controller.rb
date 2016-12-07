@@ -1,6 +1,6 @@
 class PeopleController < ApplicationController
   def index
-    @people = Person.all
+    @people = Person.page(params[:page]).per(10)
 
     render("people/index.html.erb")
   end

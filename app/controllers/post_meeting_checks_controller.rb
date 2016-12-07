@@ -10,7 +10,7 @@ class PostMeetingChecksController < ApplicationController
   end
 
   def index
-    @post_meeting_checks = PostMeetingCheck.all
+    @post_meeting_checks = PostMeetingCheck.page(params[:page]).per(10)
 
     render("post_meeting_checks/index.html.erb")
   end
