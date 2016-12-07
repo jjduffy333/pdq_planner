@@ -10,7 +10,7 @@ class SharedMeetingsController < ApplicationController
   end
 
   def index
-    @shared_meetings = SharedMeeting.all
+    @shared_meetings = current_user.shared_meetings.page(params[:page]).per(10)
 
     render("shared_meetings/index.html.erb")
   end
