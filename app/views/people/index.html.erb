@@ -21,13 +21,25 @@
 
       <% @people.each do |person| %>
       <tr>
-        <td><%= person.user.email %></td>
+        <td>
+          <% if person.user.present? %>
+            <a href="/users/<%= person.user.id %>">
+              <%= person.user.email %>
+            </a>
+          <% end %>
+        </td>
         <td><%= person.name %></td>
         <td><img src='<%= person.photo %>' class='img-responsive'></td>
         <td><%= person.relationship %></td>
         <td><%= person.phone %></td>
         <td><%= person.email %></td>
-        <td><%= person.meeting.user_id %></td>
+        <td>
+          <% if person.meeting.present? %>
+            <a href="/shared_meetings/<%= person.meeting.id %>">
+              <%= person.meeting.user_id %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/people/<%= person.id %>" class="btn btn-primary">Show</a>
           <a href="/people/<%= person.id %>/edit" class="btn btn-warning">Edit</a>

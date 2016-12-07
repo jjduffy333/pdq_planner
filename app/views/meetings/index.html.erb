@@ -19,7 +19,13 @@
 
       <% @meetings.each do |meeting| %>
       <tr>
-        <td><%= meeting.user.email %></td>
+        <td>
+          <% if meeting.user.present? %>
+            <a href="/users/<%= meeting.user.id %>">
+              <%= meeting.user.email %>
+            </a>
+          <% end %>
+        </td>
         <td><%= meeting.title %></td>
         <td><%= meeting.purpose %></td>
         <td><%= meeting.benefit %></td>

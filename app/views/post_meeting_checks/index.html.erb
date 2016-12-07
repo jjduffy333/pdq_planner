@@ -19,8 +19,20 @@
 
       <% @post_meeting_checks.each do |post_meeting_check| %>
       <tr>
-        <td><%= post_meeting_check.meeting.user_id %></td>
-        <td><%= post_meeting_check.user.email %></td>
+        <td>
+          <% if post_meeting_check.meeting.present? %>
+            <a href="/meetings/<%= post_meeting_check.meeting.id %>">
+              <%= post_meeting_check.meeting.user_id %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if post_meeting_check.user.present? %>
+            <a href="/users/<%= post_meeting_check.user.id %>">
+              <%= post_meeting_check.user.email %>
+            </a>
+          <% end %>
+        </td>
         <td><%= post_meeting_check.task %></td>
         <td><%= post_meeting_check.description %></td>
         <td><%= post_meeting_check.next_check_date %></td>

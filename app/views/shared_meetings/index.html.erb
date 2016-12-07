@@ -15,7 +15,13 @@
 
       <% @shared_meetings.each do |shared_meeting| %>
       <tr>
-        <td><%= shared_meeting.user.email %></td>
+        <td>
+          <% if shared_meeting.user.present? %>
+            <a href="/users/<%= shared_meeting.user.id %>">
+              <%= shared_meeting.user.email %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/shared_meetings/<%= shared_meeting.id %>" class="btn btn-primary">Show</a>
           

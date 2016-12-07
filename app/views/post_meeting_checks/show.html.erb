@@ -6,10 +6,22 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>Check</dt>
-      <dd><%= @post_meeting_check.check_id %></dd>
+      <dd>
+        <% if @post_meeting_check.meeting.present? %>
+          <a href="/meetings/<%= @post_meeting_check.check_id %>">
+            <%= @post_meeting_check.meeting.user_id %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>User</dt>
-      <dd><%= @post_meeting_check.user_id %></dd>
+      <dd>
+        <% if @post_meeting_check.user.present? %>
+          <a href="/users/<%= @post_meeting_check.user_id %>">
+            <%= @post_meeting_check.user.email %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Task</dt>
       <dd><%= @post_meeting_check.task %></dd>
