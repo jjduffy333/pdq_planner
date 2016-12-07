@@ -1,5 +1,7 @@
 ActiveAdmin.register PostMeetingCheck do
 
+ permit_params :check_id, :user_id, :task, :description, :next_check_date
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
