@@ -20,7 +20,7 @@
       <% @post_meeting_checks.each do |post_meeting_check| %>
       <tr>
         <td><%= post_meeting_check.meeting.user_id %></td>
-        <td><%= post_meeting_check.user_id %></td>
+        <td><%= post_meeting_check.user.email %></td>
         <td><%= post_meeting_check.task %></td>
         <td><%= post_meeting_check.description %></td>
         <td><%= post_meeting_check.next_check_date %></td>
