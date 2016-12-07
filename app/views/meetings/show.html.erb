@@ -65,6 +65,56 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_post_meeting_check" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for check_id -->
+      <div class="form-group">
+        <label for="check_id" class="control-label">
+          Check
+        </label>
+
+        <%= select_tag(:check_id, options_from_collection_for_select(Meeting.all, :id, :user_id), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for user_id -->
+      <input type="hidden" name="user_id" value="<%= current_user.id %>">
+
+      <!-- Label and input for task -->
+      <div class="form-group">
+        <label for="task" class="control-label">
+          Task
+        </label>
+
+        <input type="text" id="task" name="task" placeholder="Task" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for description -->
+      <div class="form-group">
+        <label for="description" class="control-label">
+          Description
+        </label>
+
+        <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"></textarea>
+      </div>
+
+      <!-- Label and input for next_check_date -->
+      <div class="form-group">
+        <label for="next_check_date" class="control-label">
+          Next check date
+        </label>
+
+        <input type="text" id="next_check_date" name="next_check_date" placeholder="Next check date" class="form-control" value="">
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Post Meeting Check
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>
