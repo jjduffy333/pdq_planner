@@ -26,8 +26,11 @@
         <td><%= post_meeting_check.next_check_date %></td>
         <td>
           <a href="/post_meeting_checks/<%= post_meeting_check.id %>" class="btn btn-primary">Show</a>
-          <a href="/post_meeting_checks/<%= post_meeting_check.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_post_meeting_check/<%= post_meeting_check.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          
+          <% if current_user == post_meeting_check.user %>
+            <a href="/post_meeting_checks/<%= post_meeting_check.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_post_meeting_check/<%= post_meeting_check.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>
