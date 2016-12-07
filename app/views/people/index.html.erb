@@ -27,7 +27,7 @@
         <td><%= person.relationship %></td>
         <td><%= person.phone %></td>
         <td><%= person.email %></td>
-        <td><%= person.meeting_id %></td>
+        <td><%= person.meeting.user_id %></td>
         <td>
           <a href="/people/<%= person.id %>" class="btn btn-primary">Show</a>
           <a href="/people/<%= person.id %>/edit" class="btn btn-warning">Edit</a>
