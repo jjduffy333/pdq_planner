@@ -78,7 +78,7 @@
           Meeting
         </label>
 
-        <input type="text" id="meeting_id" name="meeting_id" placeholder="Meeting" class="form-control" value="<%= @person.meeting_id %>">
+        <%= select_tag(:meeting_id, options_from_collection_for_select(SharedMeeting.all, :id, :user_id, @person.meeting_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-warning">
