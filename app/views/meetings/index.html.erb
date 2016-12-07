@@ -26,8 +26,11 @@
         <td><%= meeting.check_id %></td>
         <td>
           <a href="/meetings/<%= meeting.id %>" class="btn btn-primary">Show</a>
-          <a href="/meetings/<%= meeting.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_meeting/<%= meeting.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          
+          <% if current_user == meeting.user %>
+            <a href="/meetings/<%= meeting.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_meeting/<%= meeting.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>
