@@ -24,7 +24,7 @@
           Check
         </label>
 
-        <input type="text" id="check_id" name="check_id" placeholder="Check" class="form-control" value="<%= @post_meeting_check.check_id %>">
+        <%= select_tag(:check_id, options_from_collection_for_select(Meeting.all, :id, :user_id, @post_meeting_check.check_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for user_id -->
