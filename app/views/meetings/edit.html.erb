@@ -1,0 +1,73 @@
+<!-- Validation failure messages -->
+<% if @meeting.errors.any? %>
+  <% @meeting.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Meeting #<%= @meeting.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_meeting/<%= @meeting.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @meeting.user_id %>">
+      </div>
+
+      <!-- Label and input for title -->
+      <div class="form-group">
+        <label for="title" class="control-label">
+          Title
+        </label>
+
+        <input type="text" id="title" name="title" placeholder="Title" class="form-control" value="<%= @meeting.title %>">
+      </div>
+
+      <!-- Label and input for purpose -->
+      <div class="form-group">
+        <label for="purpose" class="control-label">
+          Purpose
+        </label>
+
+        <input type="text" id="purpose" name="purpose" placeholder="Purpose" class="form-control" value="<%= @meeting.purpose %>">
+      </div>
+
+      <!-- Label and input for benefit -->
+      <div class="form-group">
+        <label for="benefit" class="control-label">
+          Benefit
+        </label>
+
+        <input type="text" id="benefit" name="benefit" placeholder="Benefit" class="form-control" value="<%= @meeting.benefit %>">
+      </div>
+
+      <!-- Label and input for check_id -->
+      <div class="form-group">
+        <label for="check_id" class="control-label">
+          Check
+        </label>
+
+        <input type="text" id="check_id" name="check_id" placeholder="Check" class="form-control" value="<%= @meeting.check_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Meeting
+      </button>
+      or
+      <a href="/meetings/<%= @meeting.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
