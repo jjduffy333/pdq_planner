@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Person resource:
+  # CREATE
+  get "/people/new", :controller => "people", :action => "new"
+  post "/create_person", :controller => "people", :action => "create"
+
+  # READ
+  get "/people", :controller => "people", :action => "index"
+  get "/people/:id", :controller => "people", :action => "show"
+
+  # UPDATE
+  get "/people/:id/edit", :controller => "people", :action => "edit"
+  post "/update_person/:id", :controller => "people", :action => "update"
+
+  # DELETE
+  get "/delete_person/:id", :controller => "people", :action => "destroy"
+  #------------------------------
+
   # Routes for the Post_meeting_check resource:
   # CREATE
   get "/post_meeting_checks/new", :controller => "post_meeting_checks", :action => "new"
