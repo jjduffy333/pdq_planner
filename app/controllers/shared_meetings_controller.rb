@@ -1,4 +1,14 @@
 class SharedMeetingsController < ApplicationController
+  before_action :current_user_must_be_shared_meeting_user, :only => [:edit, :update, :destroy]
+
+  def current_user_must_be_shared_meeting_user
+    shared_meeting = SharedMeeting.find(params[:id])
+
+    unless current_user == shared_meeting.user
+      redirect_to :back, :alert => "You are not authorized for that."
+    end
+  end
+
   def index
     @shared_meetings = SharedMeeting.all
 

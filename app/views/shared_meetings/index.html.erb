@@ -18,8 +18,11 @@
         <td><%= shared_meeting.user.email %></td>
         <td>
           <a href="/shared_meetings/<%= shared_meeting.id %>" class="btn btn-primary">Show</a>
-          <a href="/shared_meetings/<%= shared_meeting.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_shared_meeting/<%= shared_meeting.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          
+          <% if current_user == shared_meeting.user %>
+            <a href="/shared_meetings/<%= shared_meeting.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_shared_meeting/<%= shared_meeting.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>
