@@ -26,3 +26,127 @@
     </div>
   </div>
 </div>
+
+<!-- A User has many post_meeting_checks -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Post_meeting_checks
+      </li>
+
+      <% @user.post_meeting_checks.each do |post_meeting_check| %>
+        <li class="list-group-item">
+          <a href="/post_meeting_checks/<%= post_meeting_check.id %>">
+            <%= post_meeting_check.created_at %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/post_meeting_checks/<%= post_meeting_check.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/post_meeting_checks/<%= post_meeting_check.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_post_meeting_check/<%= post_meeting_check.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many meetings -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Meetings
+      </li>
+
+      <% @user.meetings.each do |meeting| %>
+        <li class="list-group-item">
+          <a href="/meetings/<%= meeting.id %>">
+            <%= meeting.user_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/meetings/<%= meeting.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/meetings/<%= meeting.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_meeting/<%= meeting.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many people -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        People
+      </li>
+
+      <% @user.people.each do |person| %>
+        <li class="list-group-item">
+          <a href="/people/<%= person.id %>">
+            <%= person.user_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/people/<%= person.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/people/<%= person.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_person/<%= person.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many shared_meetings -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Shared_meetings
+      </li>
+
+      <% @user.shared_meetings.each do |shared_meeting| %>
+        <li class="list-group-item">
+          <a href="/shared_meetings/<%= shared_meeting.id %>">
+            <%= shared_meeting.user_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/shared_meetings/<%= shared_meeting.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/shared_meetings/<%= shared_meeting.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_shared_meeting/<%= shared_meeting.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

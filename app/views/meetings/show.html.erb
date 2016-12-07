@@ -35,3 +35,34 @@
     </div>
   </div>
 </div>
+
+<!-- A Meeting has many post_meeting_checks -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Post_meeting_checks
+      </li>
+
+      <% @meeting.post_meeting_checks.each do |post_meeting_check| %>
+        <li class="list-group-item">
+          <a href="/post_meeting_checks/<%= post_meeting_check.id %>">
+            <%= post_meeting_check.created_at %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/post_meeting_checks/<%= post_meeting_check.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/post_meeting_checks/<%= post_meeting_check.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_post_meeting_check/<%= post_meeting_check.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
