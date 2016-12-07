@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   # Direct associations
 
+  has_many   :shared_meetings,
+             :dependent => :nullify
+
   has_many   :people,
              :dependent => :destroy
 
