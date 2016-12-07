@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "meetings#index"
   # Routes for the Shared_meeting resource:
   # CREATE
   get "/shared_meetings/new", :controller => "shared_meetings", :action => "new"
