@@ -19,7 +19,7 @@
 
       <% @meetings.each do |meeting| %>
       <tr>
-        <td><%= meeting.user_id %></td>
+        <td><%= meeting.user.email %></td>
         <td><%= meeting.title %></td>
         <td><%= meeting.purpose %></td>
         <td><%= meeting.benefit %></td>
