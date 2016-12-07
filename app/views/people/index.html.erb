@@ -21,7 +21,7 @@
 
       <% @people.each do |person| %>
       <tr>
-        <td><%= person.user_id %></td>
+        <td><%= person.user.email %></td>
         <td><%= person.name %></td>
         <td><%= person.photo %></td>
         <td><%= person.relationship %></td>
