@@ -1,5 +1,7 @@
 ActiveAdmin.register Person do
 
+ permit_params :user_id, :name, :photo, :relationship, :phone, :email, :meeting_id
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
