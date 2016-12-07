@@ -1,0 +1,36 @@
+<div class="page-header">
+  <h1>
+    Post meeting checks
+    <a href="/post_meeting_checks/new" class="btn btn-lg btn-success">New Post meeting check</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Check</th>
+        <th>User</th>
+        <th>Task</th>
+        <th>Description</th>
+        <th>Next check date</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @post_meeting_checks.each do |post_meeting_check| %>
+      <tr>
+        <td><%= post_meeting_check.check_id %></td>
+        <td><%= post_meeting_check.user_id %></td>
+        <td><%= post_meeting_check.task %></td>
+        <td><%= post_meeting_check.description %></td>
+        <td><%= post_meeting_check.next_check_date %></td>
+        <td>
+          <a href="/post_meeting_checks/<%= post_meeting_check.id %>" class="btn btn-primary">Show</a>
+          <a href="/post_meeting_checks/<%= post_meeting_check.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_post_meeting_check/<%= post_meeting_check.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

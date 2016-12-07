@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Post_meeting_check resource:
+  # CREATE
+  get "/post_meeting_checks/new", :controller => "post_meeting_checks", :action => "new"
+  post "/create_post_meeting_check", :controller => "post_meeting_checks", :action => "create"
+
+  # READ
+  get "/post_meeting_checks", :controller => "post_meeting_checks", :action => "index"
+  get "/post_meeting_checks/:id", :controller => "post_meeting_checks", :action => "show"
+
+  # UPDATE
+  get "/post_meeting_checks/:id/edit", :controller => "post_meeting_checks", :action => "edit"
+  post "/update_post_meeting_check/:id", :controller => "post_meeting_checks", :action => "update"
+
+  # DELETE
+  get "/delete_post_meeting_check/:id", :controller => "post_meeting_checks", :action => "destroy"
+  #------------------------------
+
   # Routes for the Meeting resource:
   # CREATE
   get "/meetings/new", :controller => "meetings", :action => "new"

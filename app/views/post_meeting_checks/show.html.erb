@@ -1,0 +1,37 @@
+<div class="page-header">
+  <h3>Post Meeting Check #<%= @post_meeting_check.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Check</dt>
+      <dd><%= @post_meeting_check.check_id %></dd>
+
+      <dt>User</dt>
+      <dd><%= @post_meeting_check.user_id %></dd>
+
+      <dt>Task</dt>
+      <dd><%= @post_meeting_check.task %></dd>
+
+      <dt>Description</dt>
+      <dd><%= @post_meeting_check.description %></dd>
+
+      <dt>Next check date</dt>
+      <dd><%= @post_meeting_check.next_check_date %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/post_meeting_checks" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/post_meeting_checks/<%= @post_meeting_check.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_post_meeting_check/<%= @post_meeting_check.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
