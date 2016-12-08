@@ -19,7 +19,7 @@ class MeetingsController < ApplicationController
   def show
     @post_meeting_check = PostMeetingCheck.new
     @meeting = Meeting.find(params[:id])
-
+  
     render("meetings/show.html.erb")
   end
 
