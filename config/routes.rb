@@ -2,6 +2,23 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root :to => "meetings#index"
+  # Routes for the Meeting_attendance resource:
+  # CREATE
+  get "/meeting_attendances/new", :controller => "meeting_attendances", :action => "new"
+  post "/create_meeting_attendance", :controller => "meeting_attendances", :action => "create"
+
+  # READ
+  get "/meeting_attendances", :controller => "meeting_attendances", :action => "index"
+  get "/meeting_attendances/:id", :controller => "meeting_attendances", :action => "show"
+
+  # UPDATE
+  get "/meeting_attendances/:id/edit", :controller => "meeting_attendances", :action => "edit"
+  post "/update_meeting_attendance/:id", :controller => "meeting_attendances", :action => "update"
+
+  # DELETE
+  get "/delete_meeting_attendance/:id", :controller => "meeting_attendances", :action => "destroy"
+  #------------------------------
+
   # Routes for the Shared_meeting resource:
   # CREATE
   get "/shared_meetings/new", :controller => "shared_meetings", :action => "new"

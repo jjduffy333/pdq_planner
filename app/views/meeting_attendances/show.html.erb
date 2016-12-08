@@ -1,0 +1,40 @@
+<div class="page-header">
+  <h3>Meeting Attendance #<%= @meeting_attendance.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Meeting</dt>
+      <dd>
+        <% if @meeting_attendance.meeting.present? %>
+          <a href="/meetings/<%= @meeting_attendance.meeting_id %>">
+            <%= @meeting_attendance.meeting.user_id %>
+          </a>
+        <% end %>
+      </dd>
+
+      <dt>User</dt>
+      <dd>
+        <% if @meeting_attendance.user.present? %>
+          <a href="/users/<%= @meeting_attendance.user_id %>">
+            <%= @meeting_attendance.user.email %>
+          </a>
+        <% end %>
+      </dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/meeting_attendances" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/meeting_attendances/<%= @meeting_attendance.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_meeting_attendance/<%= @meeting_attendance.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

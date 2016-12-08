@@ -1,14 +1,4 @@
 class PostMeetingChecksController < ApplicationController
-  before_action :current_user_must_be_post_meeting_check_user, :only => [:edit, :update, :destroy]
-
-  def current_user_must_be_post_meeting_check_user
-    post_meeting_check = PostMeetingCheck.find(params[:id])
-
-    unless current_user == post_meeting_check.user
-      redirect_to :back, :alert => "You are not authorized for that."
-    end
-  end
-
   def index
     @q = PostMeetingCheck.ransack(params[:q])
     @post_meeting_checks = @q.result(:distinct => true).includes(:user, :meeting).page(params[:page]).per(10)
