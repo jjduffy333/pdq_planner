@@ -138,6 +138,9 @@
         <th>Title</th>
         <th>Purpose</th>
         <th>Benefit</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Location</th>
         <th>Check</th>
         <th>Actions</th>
       </tr>
@@ -154,6 +157,9 @@
         <td><%= meeting.title %></td>
         <td><%= meeting.purpose %></td>
         <td><%= meeting.benefit %></td>
+        <td><%= meeting.date %></td>
+        <td><%= meeting.time %></td>
+        <td><%= meeting.location %></td>
         <td><%= meeting.check_id %></td>
         <td>
           <a href="/meetings/<%= meeting.id %>" class="btn btn-primary">Show</a>

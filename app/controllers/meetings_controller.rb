@@ -19,7 +19,10 @@ class MeetingsController < ApplicationController
   def show
     @post_meeting_check = PostMeetingCheck.new
     @meeting = Meeting.find(params[:id])
-  
+    @meeting.date = params[:date]
+    @meeting.time = params[:time]
+    @meeting.location = params[:location]
+
     render("meetings/show.html.erb")
   end
 
@@ -36,6 +39,9 @@ class MeetingsController < ApplicationController
     @meeting.title = params[:title]
     @meeting.purpose = params[:purpose]
     @meeting.benefit = params[:benefit]
+    @meeting.date = params[:date]
+    @meeting.time = params[:time]
+    @meeting.location = params[:location]
     @meeting.check_id = params[:check_id]
 
     save_status = @meeting.save
@@ -67,6 +73,9 @@ class MeetingsController < ApplicationController
     @meeting.title = params[:title]
     @meeting.purpose = params[:purpose]
     @meeting.benefit = params[:benefit]
+    @meeting.date = params[:date]
+    @meeting.time = params[:time]
+    @meeting.location = params[:location]
     @meeting.check_id = params[:check_id]
 
     save_status = @meeting.save
