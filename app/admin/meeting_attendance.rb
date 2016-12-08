@@ -1,6 +1,6 @@
-ActiveAdmin.register Person do
+ActiveAdmin.register MeetingAttendance do
 
- permit_params :user_id, :name, :photo, :relationship, :phone, :email, :meeting_id
+ permit_params :meeting_id, :user_id
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

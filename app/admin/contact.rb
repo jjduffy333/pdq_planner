@@ -1,6 +1,6 @@
-ActiveAdmin.register Meeting do
+ActiveAdmin.register Contact do
 
- permit_params :title, :purpose, :benefit, :user_id, :date, :time, :location
+ permit_params :user_id, :name, :photo, :relationship, :phone, :meeting_id
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

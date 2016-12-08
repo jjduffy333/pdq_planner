@@ -2,6 +2,7 @@ class SharedMeeting < ApplicationRecord
   # Direct associations
 
   has_many   :people,
+             :class_name => "Contact",
              :foreign_key => "meeting_id",
              :dependent => :destroy
 

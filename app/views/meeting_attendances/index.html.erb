@@ -1,0 +1,43 @@
+<div class="page-header">
+  <h1>
+    Meeting attendances
+    <a href="/meeting_attendances/new" class="btn btn-lg btn-success">New Meeting attendance</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Meeting</th>
+        <th>User</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @meeting_attendances.each do |meeting_attendance| %>
+      <tr>
+        <td>
+          <% if meeting_attendance.meeting.present? %>
+            <a href="/meetings/<%= meeting_attendance.meeting.id %>">
+              <%= meeting_attendance.meeting.user_id %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if meeting_attendance.user.present? %>
+            <a href="/users/<%= meeting_attendance.user.id %>">
+              <%= meeting_attendance.user.email %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <a href="/meeting_attendances/<%= meeting_attendance.id %>" class="btn btn-primary">Show</a>
+          <a href="/meeting_attendances/<%= meeting_attendance.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_meeting_attendance/<%= meeting_attendance.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+    <%= paginate @meeting_attendances, theme: 'twitter-bootstrap-4' %>
+  </div>
+</div>

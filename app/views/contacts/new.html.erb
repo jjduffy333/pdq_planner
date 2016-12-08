@@ -1,6 +1,6 @@
 <!-- Validation failure messages -->
-<% if @person.errors.any? %>
-  <% @person.errors.full_messages.each do |message| %>
+<% if @contact.errors.any? %>
+  <% @contact.errors.full_messages.each do |message| %>
     <div class="alert alert-dismissable alert-danger">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       <%= message %>
@@ -9,12 +9,12 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Add Person</h3>
+  <h3>Add Contact</h3>
 </div>
 
 <div class="row">
   <div class="col-md-12">
-    <form action="/create_person" method="post" enctype="multipart/form-data">
+    <form action="/create_contact" method="post" enctype="multipart/form-data">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
@@ -24,7 +24,7 @@
           User
         </label>
 
-        <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :email, @person.user_id), :class => "form-control") %>
+        <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :email, @contact.user_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for name -->
@@ -33,7 +33,7 @@
           Name
         </label>
 
-        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @person.name %>">
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @contact.name %>">
       </div>
 
       <!-- Label and input for photo -->
@@ -51,7 +51,7 @@
           Relationship
         </label>
 
-        <input type="text" id="relationship" name="relationship" placeholder="Relationship" class="form-control" value="<%= @person.relationship %>">
+        <input type="text" id="relationship" name="relationship" placeholder="Relationship" class="form-control" value="<%= @contact.relationship %>">
       </div>
 
       <!-- Label and input for phone -->
@@ -60,16 +60,7 @@
           Phone
         </label>
 
-        <input type="text" id="phone" name="phone" placeholder="Phone" class="form-control" value="<%= @person.phone %>">
-      </div>
-
-      <!-- Label and input for email -->
-      <div class="form-group">
-        <label for="email" class="control-label">
-          Email
-        </label>
-
-        <input type="text" id="email" name="email" placeholder="Email" class="form-control" value="<%= @person.email %>">
+        <input type="text" id="phone" name="phone" placeholder="Phone" class="form-control" value="<%= @contact.phone %>">
       </div>
 
       <!-- Label and input for meeting_id -->
@@ -78,14 +69,14 @@
           Meeting
         </label>
 
-        <%= select_tag(:meeting_id, options_from_collection_for_select(SharedMeeting.all, :id, :user_id, @person.meeting_id), :class => "form-control") %>
+        <%= select_tag(:meeting_id, options_from_collection_for_select(SharedMeeting.all, :id, :user_id, @contact.meeting_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-success">
-        Create Person
+        Create Contact
       </button>
       or
-      <a href="/people">Cancel</a>
+      <a href="/contacts">Cancel</a>
     </form>
   </div>
 </div>
