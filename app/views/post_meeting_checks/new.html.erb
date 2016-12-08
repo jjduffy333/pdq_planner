@@ -28,7 +28,13 @@
       </div>
 
       <!-- Label and input for user_id -->
-      <input type="hidden" name="user_id" value="<%= current_user.id %>">
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :email, @post_meeting_check.user_id), :class => "form-control") %>
+      </div>
 
       <!-- Label and input for task -->
       <div class="form-group">

@@ -27,39 +27,6 @@
   </div>
 </div>
 
-<!-- A User has many post_meeting_checks -->
-
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Post_meeting_checks
-      </li>
-
-      <% @user.post_meeting_checks.each do |post_meeting_check| %>
-        <li class="list-group-item">
-          <a href="/post_meeting_checks/<%= post_meeting_check.id %>">
-            <%= post_meeting_check.created_at %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/post_meeting_checks/<%= post_meeting_check.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <%if current_user == post_meeting_check.user %>
-              <a href="/post_meeting_checks/<%= post_meeting_check.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-              <a href="/delete_post_meeting_check/<%= post_meeting_check.id %>" class="btn btn-danger" rel="nofollow">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            <% end %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
-
 <!-- A User has many meetings -->
 
 <div class="row">
@@ -102,20 +69,20 @@
         People
       </li>
 
-      <% @user.people.each do |person| %>
+      <% @user.people.each do |contact| %>
         <li class="list-group-item">
-          <a href="/people/<%= person.id %>">
-            <%= person.user_id %>
+          <a href="/contacts/<%= contact.id %>">
+            <%= contact.user_id %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
-            <a href="/people/<%= person.id %>" class="btn btn-primary">
+            <a href="/contacts/<%= contact.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <%if current_user == person.user %>
-              <a href="/people/<%= person.id %>/edit" class="btn btn-warning">
+            <%if current_user == contact.user %>
+              <a href="/contacts/<%= contact.id %>/edit" class="btn btn-warning">
                 <i class="fa fa-edit"></i>
               </a>
-              <a href="/delete_person/<%= person.id %>" class="btn btn-danger" rel="nofollow">
+              <a href="/delete_contact/<%= contact.id %>" class="btn btn-danger" rel="nofollow">
                 <i class="fa fa-trash-o"></i>
               </a>
             <% end %>
@@ -149,6 +116,72 @@
                 <i class="fa fa-edit"></i>
               </a>
               <a href="/delete_shared_meeting/<%= shared_meeting.id %>" class="btn btn-danger" rel="nofollow">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many meeting_attendances -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Meeting_attendances
+      </li>
+
+      <% @user.meeting_attendances.each do |meeting_attendance| %>
+        <li class="list-group-item">
+          <a href="/meeting_attendances/<%= meeting_attendance.id %>">
+            <%= meeting_attendance.created_at %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/meeting_attendances/<%= meeting_attendance.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <%if current_user == meeting_attendance.user %>
+              <a href="/meeting_attendances/<%= meeting_attendance.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+              <a href="/delete_meeting_attendance/<%= meeting_attendance.id %>" class="btn btn-danger" rel="nofollow">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many post_meeting_checks -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Post_meeting_checks
+      </li>
+
+      <% @user.post_meeting_checks.each do |post_meeting_check| %>
+        <li class="list-group-item">
+          <a href="/post_meeting_checks/<%= post_meeting_check.id %>">
+            <%= post_meeting_check.created_at %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/post_meeting_checks/<%= post_meeting_check.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <%if current_user == post_meeting_check.user %>
+              <a href="/post_meeting_checks/<%= post_meeting_check.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+              <a href="/delete_post_meeting_check/<%= post_meeting_check.id %>" class="btn btn-danger" rel="nofollow">
                 <i class="fa fa-trash-o"></i>
               </a>
             <% end %>

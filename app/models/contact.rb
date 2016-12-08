@@ -1,4 +1,4 @@
-class Person < ApplicationRecord
+class Contact < ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
   # Direct associations
@@ -7,7 +7,7 @@ class Person < ApplicationRecord
              :class_name => "SharedMeeting"
 
   belongs_to :user,
-             :counter_cache => true
+             :counter_cache => :people_count
 
   # Indirect associations
 
