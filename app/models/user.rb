@@ -3,6 +3,12 @@ class User < ApplicationRecord
 
   # Direct associations
 
+  has_many   :post_meeting_checks,
+             :dependent => :destroy
+
+  has_many   :meeting_attendances,
+             :dependent => :destroy
+
   has_many   :shared_meetings,
              :dependent => :nullify
 
@@ -11,9 +17,6 @@ class User < ApplicationRecord
 
   has_many   :meetings,
              :dependent => :nullify
-
-  has_many   :post_meeting_checks,
-             :dependent => :destroy
 
   # Indirect associations
 

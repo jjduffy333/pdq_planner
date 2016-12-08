@@ -18,9 +18,6 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      
-      
-
       <!-- Label and input for title -->
       <div class="form-group">
         <label for="title" class="control-label">
@@ -55,6 +52,36 @@
         </label>
 
         <input type="text" id="check_id" name="check_id" placeholder="Check" class="form-control" value="<%= @meeting.check_id %>">
+      </div>
+
+      
+      
+
+      <!-- Label and input for date -->
+      <div class="form-group">
+        <label for="date" class="control-label">
+          Date
+        </label>
+
+        <input type="text" id="date" name="date" placeholder="Date" class="form-control" value="<%= @meeting.date %>">
+      </div>
+
+      <!-- Label and input for time -->
+      <div class="form-group">
+        <label for="time" class="control-label">
+          Time
+        </label>
+
+        <input type="text" id="time" name="time" placeholder="Time" class="form-control" value="<%= @meeting.time %>">
+      </div>
+
+      <!-- Label and input for location -->
+      <div class="form-group">
+        <label for="location" class="control-label">
+          Location
+        </label>
+
+        <input type="text" id="location" name="location" placeholder="Location" class="form-control" value="<%= @meeting.location %>">
       </div>
 
       <button class="btn btn-warning">

@@ -9,6 +9,21 @@
       <p class="lead">Narrow results:</p>
 
         <div class="form-group">
+    <%= f.label :location_cont, "Location contains" %>
+    <%= f.text_field :location_cont, :class => "form-control", :placeholder => "Location contains" %>
+  </div>
+
+<div class="form-group">
+    <%= f.label :time_cont, "Time contains" %>
+    <%= f.text_field :time_cont, :class => "form-control", :placeholder => "Time contains" %>
+  </div>
+
+<div class="form-group">
+    <%= f.label :date_cont, "Date contains" %>
+    <%= f.text_field :date_cont, :class => "form-control", :placeholder => "Date contains" %>
+  </div>
+
+<div class="form-group">
   <%= f.label :check_id, "Check" %>
   <div class="row">
     <div class='col-md-6 mb-1'>
@@ -120,6 +135,46 @@
           });
       </script>
 
+<div class="form-group">
+          <%= f.label :created_at, "MeetingAttendance Created at" %>
+          <div class="row">
+            <div class='col-md-6 mb-1'>
+              <div class='input-group date' id='meeting_attendancesgteqcreated_atPicker'>
+                  <%= f.text_field :meeting_attendances_created_at_gteq, :class => "form-control", :placeholder => "MeetingAttendance Created at greater than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+
+            <div class='col-md-6'>
+              <div class='input-group date' id='meeting_attendanceslteqcreated_atPicker'>
+                  <%= f.text_field :meeting_attendances_created_at_lteq, :class => "form-control", :placeholder => "MeetingAttendance Created at less than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+          </div>
+      </div>
+      <script type="text/javascript">
+          $(function () {
+              $('#meeting_attendancesgteqcreated_atPicker').datetimepicker({
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#meeting_attendanceslteqcreated_atPicker').datetimepicker({
+                  useCurrent: false,
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#meeting_attendancesgteqcreated_atPicker').on("dp.change", function (e) {
+                  $('#meeting_attendanceslteqcreated_atPicker').data("DateTimePicker").minDate(e.date);
+              });
+              $('#meeting_attendanceslteqcreated_atPicker').on("dp.change", function (e) {
+                  $('#meeting_attendancesgteqcreated_atPicker').data("DateTimePicker").maxDate(e.date);
+              });
+          });
+      </script>
+
       <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
 
       <a href="/meetings" class="btn btn-default btn-block mb-1">Clear filters</a>
@@ -134,16 +189,23 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <th>User</th>
         <th>Title</th>
         <th>Purpose</th>
         <th>Benefit</th>
         <th>Check</th>
+        <th>User</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Location</th>
         <th>Actions</th>
       </tr>
 
       <% @meetings.each do |meeting| %>
       <tr>
+        <td><%= meeting.title %></td>
+        <td><%= meeting.purpose %></td>
+        <td><%= meeting.benefit %></td>
+        <td><%= meeting.check_id %></td>
         <td>
           <% if meeting.user.present? %>
             <a href="/users/<%= meeting.user.id %>">
@@ -151,10 +213,9 @@
             </a>
           <% end %>
         </td>
-        <td><%= meeting.title %></td>
-        <td><%= meeting.purpose %></td>
-        <td><%= meeting.benefit %></td>
-        <td><%= meeting.check_id %></td>
+        <td><%= meeting.date %></td>
+        <td><%= meeting.time %></td>
+        <td><%= meeting.location %></td>
         <td>
           <a href="/meetings/<%= meeting.id %>" class="btn btn-primary">Show</a>
           

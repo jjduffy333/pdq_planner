@@ -1,6 +1,6 @@
-ActiveAdmin.register Meeting do
+ActiveAdmin.register MeetingAttendance do
 
- permit_params :title, :purpose, :benefit, :check_id, :user_id, :date, :time, :location
+ permit_params :meeting_id, :user_id
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
