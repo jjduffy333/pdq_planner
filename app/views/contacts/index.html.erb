@@ -1,7 +1,7 @@
 <div class="jumbotron">
   <h1>PDQ Planner</h1>
   <p>Productive. Direct. Quintessential.</p>
-  <p><a class="btn btn-primary btn-lg" href="/post_meeting_checks/new" role="button">Create a New Contact</a></p>
+  <p><a class="btn btn-primary btn-lg" href="/contacts/new" role="button">Create a New Contact</a></p>
 </div>
 
 <div class="page-header">
@@ -92,7 +92,7 @@
         <th>Photo</th>
         <th>Relationship</th>
         <th>Phone</th>
-        <th>Meeting</th>
+        <th>Email</th>
         <th>Actions</th>
       </tr>
 
@@ -101,7 +101,7 @@
         <td>
           <% if contact.user.present? %>
             <a href="/users/<%= contact.user.id %>">
-              <%= contact.user.email %>
+              <%= contact.user.name %>
             </a>
           <% end %>
         </td>

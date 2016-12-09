@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Post Meeting Check #<%= @post_meeting_check.id %></h3>
+  <h3>Edit Check Assignment #<%= @post_meeting_check.id %></h3>
 </div>
 
 <div class="row">
@@ -21,7 +21,7 @@
       <!-- Label and input for check_id -->
       <div class="form-group">
         <label for="check_id" class="control-label">
-          Check
+          Meeting
         </label>
 
         <%= select_tag(:check_id, options_from_collection_for_select(Meeting.all, :id, :user_id, @post_meeting_check.check_id), :class => "form-control") %>
@@ -33,7 +33,7 @@
           User
         </label>
 
-        <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :email, @post_meeting_check.user_id), :class => "form-control") %>
+        <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :name, @post_meeting_check.user_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for task -->
@@ -64,7 +64,7 @@
       </div>
 
       <button class="btn btn-warning">
-        Update Post Meeting Check
+        Update Check
       </button>
       or
       <a href="/post_meeting_checks/<%= @post_meeting_check.id %>">Cancel</a>

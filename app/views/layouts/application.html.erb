@@ -44,7 +44,7 @@
           <li><a href="/meetings">Meetings</a></li>
           <li><a href="/post_meeting_checks">Checks</a></li>
           <li><a href="/contacts">Contacts</a></li>
-          <li><a href="/users">Users</a></li>
+          <li><a href="/users">User Info</a></li>
           <li><a href="/rails/info">Sitemap</a></li>
         </ul>
 
@@ -52,7 +52,7 @@
           <% if current_user.present? %>
             <li>
               <a href="/users/edit">
-                <%= current_user.email %>
+                <%= current_user.name %>
               </a>
             </li>
 

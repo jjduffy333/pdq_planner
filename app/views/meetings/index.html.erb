@@ -207,13 +207,14 @@
         <td><%= meeting.date %></td>
         <td><%= meeting.time %></td>
         <td><%= meeting.location %></td>
+
         <td>
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <a href="/meetings/<%= meeting.id %>" button type="button" class="btn btn-primary">Show</button>
-            <a href="/meetings/<%= meeting.id %>/edit" button type="button" class="btn btn-warning">Edit</button>
-            <a href="/delete_meeting/<%= meeting.id %>" button type="button" class="btn btn-danger" rel="nofollow">Delete</button>
-          </div>
+          <a href="/meetings/<%= meeting.id %>" class="btn btn-primary">Show</a>
+          <a href="/meetings/<%= meeting.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_meeting/<%= meeting.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
         </td>
+
+        
       </tr>
       <% end %>
     </table>

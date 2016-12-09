@@ -9,12 +9,12 @@
       <dd>
         <% if @contact.user.present? %>
           <a href="/users/<%= @contact.user_id %>">
-            <%= @contact.user.email %>
+            <%= @contact.user.name %>
           </a>
         <% end %>
       </dd>
 
-      <dt>Name</dt>
+      <dt>Contact Name</dt>
       <dd><%= @contact.name %></dd>
 
       <dt>Photo</dt>
@@ -37,14 +37,14 @@
 
     </dl>
 
-    <div class="btn-group btn-group-justified">
-      <a href="/contacts" class="btn btn-primary">
+    <div class="btn-group btn-group-xs btn-group-justified">
+      <a href="/contacts" class="btn btn-default">
         Back
       </a>
-      <a href="/contacts/<%= @contact.id %>/edit" class="btn btn-warning">
+      <a href="/contacts/<%= @contact.id %>/edit" class="btn btn-default">
         Edit
       </a>
-      <a href="/delete_contact/<%= @contact.id %>" class="btn btn-danger" rel="nofollow">
+      <a href="/delete_contact/<%= @contact.id %>" class="btn btn-default" rel="nofollow">
         Delete
       </a>
     </div>

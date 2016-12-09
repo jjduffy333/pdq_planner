@@ -24,7 +24,7 @@
           User
         </label>
 
-        <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :email, @contact.user_id), :class => "form-control") %>
+        <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :name, @contact.user_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for name -->
@@ -66,7 +66,7 @@
       <!-- Label and input for meeting_id -->
       <div class="form-group">
         <label for="meeting_id" class="control-label">
-          Meeting
+          Email
         </label>
 
         <%= select_tag(:meeting_id, options_from_collection_for_select(SharedMeeting.all, :id, :user_id, @contact.meeting_id), :class => "form-control") %>
