@@ -1,9 +1,14 @@
+<div class="jumbotron">
+  <h1>PDQ Planner</h1>
+  <p>Productive. Direct. Quintessential.</p>
+  <p><a class="btn btn-primary btn-lg" href="/post_meeting_checks/new" role="button">Create a New Contact</a></p>
+</div>
+
 <div class="page-header">
-  <h1>
-    Contacts
-    <a href="/contacts/new" class="btn btn-lg btn-success">New Contact</a>
-  </h1>
-</div><div class="row mb-1">
+  <h3>Here Are Your Contacts:</h3>
+</div>
+
+<div class="row mb-1">
   <div class="col-md-12">
     <%= search_form_for @q, :class => "collapse", :id => "contacts_filters" do |f| %>
       <p class="lead">Narrow results:</p>
