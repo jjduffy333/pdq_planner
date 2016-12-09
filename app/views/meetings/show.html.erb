@@ -6,7 +6,7 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>Title</dt>
-      <dd><%= @meeting.title %></dd> 
+      <dd><%= @meeting.title %></dd>
 
       <dt>Purpose</dt>
       <dd><%= @meeting.purpose %></dd>
@@ -34,15 +34,15 @@
 
     </dl>
 
-    <div class="btn-group btn-group-justified">
-      <a href="/meetings" class="btn btn-primary">
+    <div class="btn-group btn-group-xs btn-group-justified">
+      <a href="/meetings" class="btn btn-default">
         Back
       </a>
       <% if current_user == @meeting.user %>
-        <a href="/meetings/<%= @meeting.id %>/edit" class="btn btn-warning">
+        <a href="/meetings/<%= @meeting.id %>/edit" class="btn btn-default">
           Edit
         </a>
-        <a href="/delete_meeting/<%= @meeting.id %>" class="btn btn-danger" rel="nofollow">
+        <a href="/delete_meeting/<%= @meeting.id %>" class="btn btn-default" rel="nofollow">
           Delete
         </a>
       <% end %>
@@ -56,7 +56,7 @@
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Post_meeting_checks
+        Create a Check Assignment for <%= @meeting.title %>
       </li>
 
       <% @meeting.post_meeting_checks.each do |post_meeting_check| %>
@@ -95,10 +95,10 @@
       <!-- Label and input for user_id -->
       <div class="form-group">
         <label for="user_id" class="control-label">
-          User
+          Check assignment for:
         </label>
 
-        <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :email), :class => "form-control") %>
+        <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :name), :class => "form-control") %>
       </div>
 
       <!-- Label and input for task -->
@@ -107,7 +107,7 @@
           Task
         </label>
 
-        <input type="text" id="task" name="task" placeholder="Task" class="form-control" value="">
+        <input type="text" id="task" name="task" placeholder="Brief description of the task" class="form-control" value="">
       </div>
 
       <!-- Label and input for description -->
@@ -116,7 +116,7 @@
           Description
         </label>
 
-        <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"></textarea>
+        <textarea id="description" name="description" placeholder="Additional notes or comments on this assignment" class="form-control" rows="3"></textarea>
       </div>
 
       <!-- Label and input for next_check_date -->
@@ -125,7 +125,7 @@
           Next check date
         </label>
 
-        <input type="text" id="next_check_date" name="next_check_date" placeholder="Next check date" class="form-control" value="">
+        <input type="text" id="next_check_date" name="next_check_date" placeholder="When is this check due?" class="form-control" value="">
       </div>
 
       <button class="btn btn-block btn-success">
@@ -143,7 +143,7 @@
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Meeting_attendances
+        Meeting Attendants
       </li>
 
       <% @meeting.meeting_attendances.each do |meeting_attendance| %>
@@ -179,11 +179,11 @@
           User
         </label>
 
-        <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :email), :class => "form-control") %>
+        <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :name), :class => "form-control") %>
       </div>
 
       <button class="btn btn-block btn-success">
-        Create Meeting Attendance
+        Add Meeting Attendee
       </button>
     </form>
       </li>

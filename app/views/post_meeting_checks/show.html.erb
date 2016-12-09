@@ -5,7 +5,7 @@
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Check</dt>
+      <dt>Meeting ID</dt>
       <dd>
         <% if @post_meeting_check.meeting.present? %>
           <a href="/meetings/<%= @post_meeting_check.check_id %>">
@@ -14,11 +14,11 @@
         <% end %>
       </dd>
 
-      <dt>User</dt>
+      <dt>Assigned To</dt>
       <dd>
         <% if @post_meeting_check.user.present? %>
           <a href="/users/<%= @post_meeting_check.user_id %>">
-            <%= @post_meeting_check.user.email %>
+            <%= @post_meeting_check.user.name %>
           </a>
         <% end %>
       </dd>
@@ -34,14 +34,14 @@
 
     </dl>
 
-    <div class="btn-group btn-group-justified">
-      <a href="/post_meeting_checks" class="btn btn-primary">
+  <div class="btn-group btn-group-xs btn-group-justified">
+      <a href="/post_meeting_checks" class="btn btn-default">
         Back
       </a>
-      <a href="/post_meeting_checks/<%= @post_meeting_check.id %>/edit" class="btn btn-warning">
+      <a href="/post_meeting_checks/<%= @post_meeting_check.id %>/edit" class="btn btn-default">
         Edit
       </a>
-      <a href="/delete_post_meeting_check/<%= @post_meeting_check.id %>" class="btn btn-danger" rel="nofollow">
+      <a href="/delete_post_meeting_check/<%= @post_meeting_check.id %>" class="btn btn-default" rel="nofollow">
         Delete
       </a>
     </div>

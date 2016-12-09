@@ -1,9 +1,14 @@
+<div class="jumbotron">
+  <h1>PDQ Planner</h1>
+  <p>Action-Oriented Meetings with Follow-Through!</p>
+  <p><a class="btn btn-primary btn-lg" href="/meetings/new" role="button">Create a New Meeting</a></p>
+</div>
+
 <div class="page-header">
-  <h1>
-    Meetings
-    <a href="/meetings/new" class="btn btn-lg btn-success">New Meeting</a>
-  </h1>
-</div><div class="row mb-1">
+  <h3>Here Are Your Meetings:</h3>
+</div>
+
+<div class="row mb-1">
   <div class="col-md-12">
     <%= search_form_for @q, :class => "collapse", :id => "meetings_filters" do |f| %>
       <p class="lead">Narrow results:</p>
@@ -180,7 +185,7 @@
         <th>Title</th>
         <th>Purpose</th>
         <th>Benefit</th>
-        <th>User</th>
+        <th>Owner</th>
         <th>Date</th>
         <th>Time</th>
         <th>Location</th>
@@ -195,7 +200,7 @@
         <td>
           <% if meeting.user.present? %>
             <a href="/users/<%= meeting.user.id %>">
-              <%= meeting.user.email %>
+              <%= meeting.user.name %>
             </a>
           <% end %>
         </td>
@@ -203,12 +208,11 @@
         <td><%= meeting.time %></td>
         <td><%= meeting.location %></td>
         <td>
-          <a href="/meetings/<%= meeting.id %>" class="btn btn-primary">Show</a>
-          
-          <% if current_user == meeting.user %>
-            <a href="/meetings/<%= meeting.id %>/edit" class="btn btn-warning">Edit</a>
-            <a href="/delete_meeting/<%= meeting.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
-          <% end %>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <a href="/meetings/<%= meeting.id %>" button type="button" class="btn btn-primary">Show</button>
+            <a href="/meetings/<%= meeting.id %>/edit" button type="button" class="btn btn-warning">Edit</button>
+            <a href="/delete_meeting/<%= meeting.id %>" button type="button" class="btn btn-danger" rel="nofollow">Delete</button>
+          </div>
         </td>
       </tr>
       <% end %>
