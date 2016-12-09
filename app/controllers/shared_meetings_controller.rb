@@ -17,7 +17,7 @@ class SharedMeetingsController < ApplicationController
   end
 
   def show
-    @person = Person.new
+    @contact = Contact.new
     @shared_meeting = SharedMeeting.find(params[:id])
 
     render("shared_meetings/show.html.erb")

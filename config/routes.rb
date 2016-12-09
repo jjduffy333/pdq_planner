@@ -2,6 +2,23 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root :to => "meetings#index"
+  # Routes for the Meeting_attendance resource:
+  # CREATE
+  get "/meeting_attendances/new", :controller => "meeting_attendances", :action => "new"
+  post "/create_meeting_attendance", :controller => "meeting_attendances", :action => "create"
+
+  # READ
+  get "/meeting_attendances", :controller => "meeting_attendances", :action => "index"
+  get "/meeting_attendances/:id", :controller => "meeting_attendances", :action => "show"
+
+  # UPDATE
+  get "/meeting_attendances/:id/edit", :controller => "meeting_attendances", :action => "edit"
+  post "/update_meeting_attendance/:id", :controller => "meeting_attendances", :action => "update"
+
+  # DELETE
+  get "/delete_meeting_attendance/:id", :controller => "meeting_attendances", :action => "destroy"
+  #------------------------------
+
   # Routes for the Shared_meeting resource:
   # CREATE
   get "/shared_meetings/new", :controller => "shared_meetings", :action => "new"
@@ -19,21 +36,21 @@ Rails.application.routes.draw do
   get "/delete_shared_meeting/:id", :controller => "shared_meetings", :action => "destroy"
   #------------------------------
 
-  # Routes for the Person resource:
+  # Routes for the Contact resource:
   # CREATE
-  get "/people/new", :controller => "people", :action => "new"
-  post "/create_person", :controller => "people", :action => "create"
+  get "/contacts/new", :controller => "contacts", :action => "new"
+  post "/create_contact", :controller => "contacts", :action => "create"
 
   # READ
-  get "/people", :controller => "people", :action => "index"
-  get "/people/:id", :controller => "people", :action => "show"
+  get "/contacts", :controller => "contacts", :action => "index"
+  get "/contacts/:id", :controller => "contacts", :action => "show"
 
   # UPDATE
-  get "/people/:id/edit", :controller => "people", :action => "edit"
-  post "/update_person/:id", :controller => "people", :action => "update"
+  get "/contacts/:id/edit", :controller => "contacts", :action => "edit"
+  post "/update_contact/:id", :controller => "contacts", :action => "update"
 
   # DELETE
-  get "/delete_person/:id", :controller => "people", :action => "destroy"
+  get "/delete_contact/:id", :controller => "contacts", :action => "destroy"
   #------------------------------
 
   # Routes for the Post_meeting_check resource:
