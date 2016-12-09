@@ -1,7 +1,7 @@
 <div class="page-header">
   <h1>
-    Post meeting checks
-    <a href="/post_meeting_checks/new" class="btn btn-lg btn-success">New Post meeting check</a>
+    Checks
+    <a href="/post_meeting_checks/new" class="btn btn-lg btn-success">Create New Check Assignment</a>
   </h1>
 </div>
 
@@ -29,7 +29,7 @@
         <td>
           <% if post_meeting_check.user.present? %>
             <a href="/users/<%= post_meeting_check.user.id %>">
-              <%= post_meeting_check.user.email %>
+              <%= post_meeting_check.user.name %>
             </a>
           <% end %>
         </td>
