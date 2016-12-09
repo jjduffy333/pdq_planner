@@ -41,19 +41,19 @@
         People
       </li>
 
-      <% @shared_meeting.people.each do |person| %>
+      <% @shared_meeting.people.each do |contact| %>
         <li class="list-group-item">
-          <a href="/people/<%= person.id %>">
-            <%= person.user_id %>
+          <a href="/contacts/<%= contact.id %>">
+            <%= contact.user_id %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
-            <a href="/people/<%= person.id %>" class="btn btn-primary">
+            <a href="/contacts/<%= contact.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <a href="/people/<%= person.id %>/edit" class="btn btn-warning">
+            <a href="/contacts/<%= contact.id %>/edit" class="btn btn-warning">
               <i class="fa fa-edit"></i>
             </a>
-            <a href="/delete_person/<%= person.id %>" class="btn btn-danger" rel="nofollow">
+            <a href="/delete_contact/<%= contact.id %>" class="btn btn-danger" rel="nofollow">
               <i class="fa fa-trash-o"></i>
             </a>
           </div>
@@ -61,7 +61,7 @@
       <% end %>
 
       <li class="list-group-item">
-        <form action="/create_person" method="post" enctype="multipart/form-data">
+        <form action="/create_contact" method="post" enctype="multipart/form-data">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
@@ -110,15 +110,6 @@
         <input type="text" id="phone" name="phone" placeholder="Phone" class="form-control" value="">
       </div>
 
-      <!-- Label and input for email -->
-      <div class="form-group">
-        <label for="email" class="control-label">
-          Email
-        </label>
-
-        <input type="text" id="email" name="email" placeholder="Email" class="form-control" value="">
-      </div>
-
       <!-- Label and input for meeting_id -->
       <div class="form-group">
         <label for="meeting_id" class="control-label">
@@ -129,7 +120,7 @@
       </div>
 
       <button class="btn btn-block btn-success">
-        Create Person
+        Create Contact
       </button>
     </form>
       </li>

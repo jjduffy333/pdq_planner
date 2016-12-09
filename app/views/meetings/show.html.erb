@@ -5,15 +5,6 @@
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Owner</dt>
-      <dd>
-        <% if @meeting.user.present? %>
-          <a href="/users/<%= @meeting.user_id %>">
-            <%= @meeting.user.name %>
-          </a>
-        <% end %>
-      </dd>
-
       <dt>Title</dt>
       <dd><%= @meeting.title %></dd>
 
@@ -23,6 +14,15 @@
       <dt>Benefit</dt>
       <dd><%= @meeting.benefit %></dd>
 
+      <dt>User</dt>
+      <dd>
+        <% if @meeting.user.present? %>
+          <a href="/users/<%= @meeting.user_id %>">
+            <%= @meeting.user.email %>
+          </a>
+        <% end %>
+      </dd>
+
       <dt>Date</dt>
       <dd><%= @meeting.date %></dd>
 
@@ -31,9 +31,6 @@
 
       <dt>Location</dt>
       <dd><%= @meeting.location %></dd>
-
-      <dt>Check</dt>
-      <dd><%= @meeting.check_id %></dd>
 
     </dl>
 
@@ -59,7 +56,7 @@
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Check Assignments for <%= @meeting.title %>
+        Post_meeting_checks
       </li>
 
       <% @meeting.post_meeting_checks.each do |post_meeting_check| %>
@@ -96,7 +93,13 @@
       </div>
 
       <!-- Label and input for user_id -->
-      <input type="hidden" name="user_id" value="<%= current_user.id %>">
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :email), :class => "form-control") %>
+      </div>
 
       <!-- Label and input for task -->
       <div class="form-group">
@@ -127,6 +130,60 @@
 
       <button class="btn btn-block btn-success">
         Create Post Meeting Check
+      </button>
+    </form>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- A Meeting has many meeting_attendances -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Meeting_attendances
+      </li>
+
+      <% @meeting.meeting_attendances.each do |meeting_attendance| %>
+        <li class="list-group-item">
+          <a href="/meeting_attendances/<%= meeting_attendance.id %>">
+            <%= meeting_attendance.created_at %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/meeting_attendances/<%= meeting_attendance.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/meeting_attendances/<%= meeting_attendance.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_meeting_attendance/<%= meeting_attendance.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_meeting_attendance" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for meeting_id -->
+      <input type="hidden" name="meeting_id" value="<%= @meeting.id %>">
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :email), :class => "form-control") %>
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Meeting Attendance
       </button>
     </form>
       </li>

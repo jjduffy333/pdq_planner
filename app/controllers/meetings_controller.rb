@@ -11,17 +11,15 @@ class MeetingsController < ApplicationController
 
   def index
     @q = current_user.meetings.ransack(params[:q])
-      @meetings = @q.result(:distinct => true).includes(:user, :post_meeting_checks).page(params[:page]).per(10)
+      @meetings = @q.result(:distinct => true).includes(:user, :post_meeting_checks, :meeting_attendances).page(params[:page]).per(10)
 
     render("meetings/index.html.erb")
   end
 
   def show
+    @meeting_attendance = MeetingAttendance.new
     @post_meeting_check = PostMeetingCheck.new
     @meeting = Meeting.find(params[:id])
-    @meeting.date = params[:date]
-    @meeting.time = params[:time]
-    @meeting.location = params[:location]
 
     render("meetings/show.html.erb")
   end
@@ -35,14 +33,13 @@ class MeetingsController < ApplicationController
   def create
     @meeting = Meeting.new
 
-    @meeting.user_id = params[:user_id]
     @meeting.title = params[:title]
     @meeting.purpose = params[:purpose]
     @meeting.benefit = params[:benefit]
+    @meeting.user_id = params[:user_id]
     @meeting.date = params[:date]
     @meeting.time = params[:time]
     @meeting.location = params[:location]
-    @meeting.check_id = params[:check_id]
 
     save_status = @meeting.save
 
@@ -69,14 +66,13 @@ class MeetingsController < ApplicationController
   def update
     @meeting = Meeting.find(params[:id])
 
-    @meeting.user_id = params[:user_id]
     @meeting.title = params[:title]
     @meeting.purpose = params[:purpose]
     @meeting.benefit = params[:benefit]
+    @meeting.user_id = params[:user_id]
     @meeting.date = params[:date]
     @meeting.time = params[:time]
     @meeting.location = params[:location]
-    @meeting.check_id = params[:check_id]
 
     save_status = @meeting.save
 
